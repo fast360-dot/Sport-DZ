@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport DZ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            <h2>SPORT DZ</h2>
+        </div>
+
+        <nav>
+            <a href="#">الرئيسية</a>
+            <a href="#products">المنتجات</a>
+            <a href="#order">اطلب الآن</a>
+        </nav>
+
+        <div class="cart-icon">
+            🛒 <span id="cart-count">0</span>
+        </div>
+
+    </header>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>أفضل الأحذية الرياضية في الجزائر</h1>
+
+            <p>
+                جودة عالية - أسعار مناسبة - التوصيل إلى جميع الولايات
+            </p>
+
+            <a href="#products" class="btn">
+                تسوق الآن
+            </a>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="images/shoe4.jpg" alt="">
+        </div>
+
+    </section>
+
+    <!-- Products -->
+
+    <section id="products">
+
+        <h2 class="title">منتجاتنا</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img src="images/shoe1.jpg">
+
+                <h3>Running Black</h3>
+
+                <p class="price">6500 DA</p>
+
+                <button onclick="addToCart('Running Black',6500)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/shoe2.jpg">
+
+                <h3>Sport Red</h3>
+
+                <p class="price">7200 DA</p>
+
+                <button onclick="addToCart('Sport Red',7200)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/shoe3.jpg">
+
+                <h3>Classic White</h3>
+
+                <p class="price">6900 DA</p>
+
+                <button onclick="addToCart('Classic White',6900)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/shoe5.jpg">
+
+                <h3>Air Max</h3>
+
+                <p class="price">4500 DA</p>
+
+                <button onclick="addToCart('Air Max',4500)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/shoe6.jpg">
+
+                <h3>Runner Pro</h3>
+
+                <p class="price">3000 DA</p>
+
+                <button onclick="addToCart('Runner Pro',3000)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/shoe7.jpg">
+
+                <h3>Sport Blue</h3>
+
+                <p class="price">8200 DA</p>
+
+                <button onclick="addToCart('Sport Blue',8200)">
+                    أضف إلى السلة
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Cart -->
+
+    <section id="cart">
+
+        <h2 class="title">سلة المشتريات</h2>
+
+        <ul id="cart-list"></ul>
+
+        <h3>
+            المجموع :
+            <span id="total">0</span> DA
+        </h3>
+
+    </section>
+
+    <!-- Order -->
+
+    <section id="order">
+
+        <h2 class="title">اطلب الآن</h2>
+
+        <form>
+
+            <input type="text" placeholder="الاسم" required>
+
+            <input type="text" placeholder="اللقب" required>
+
+            <input type="tel" placeholder="رقم الهاتف" required>
+
+            <select required>
+
+                <option>اختر الولاية</option>
+
+                <option>الجزائر</option>
+                <option>البليدة</option>
+                <option>وهران</option>
+                <option>قسنطينة</option>
+                <option>سطيف</option>
+
+            </select>
+
+            <input type="text" placeholder="البلدية">
+
+            <input type="text" placeholder="العنوان الكامل">
+
+            <input type="text" id="product" placeholder="المنتج" readonly>
+
+            <select>
+
+                <option>المقاس</option>
+
+                <option>39</option>
+                <option>40</option>
+                <option>41</option>
+                <option>42</option>
+                <option>43</option>
+                <option>44</option>
+
+            </select>
+
+            <input type="number" value="1" min="1" placeholder="الكمية">
+
+            <textarea placeholder="ملاحظات"></textarea>
+
+            <button type="submit">
+                إرسال الطلب
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>SPORT DZ</h3>
+
+        <p>
+            جميع الحقوق محفوظة © 2026
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
