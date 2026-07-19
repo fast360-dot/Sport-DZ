@@ -63,87 +63,45 @@
         <div class="cards">
 
             <div class="card">
-
                 <img src="images/shoe1.jpg">
-
                 <h3>Running Black</h3>
-
                 <p class="price">6500 DA</p>
-
-                <button onclick="addToCart('Running Black',6500)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Running Black',6500)">أضف إلى السلة</button>
             </div>
 
             <div class="card">
-
                 <img src="images/shoe2.jpg">
-
                 <h3>Sport Red</h3>
-
                 <p class="price">7200 DA</p>
-
-                <button onclick="addToCart('Sport Red',7200)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Sport Red',7200)">أضف إلى السلة</button>
             </div>
 
             <div class="card">
-
                 <img src="images/shoe3.jpg">
-
                 <h3>Classic White</h3>
-
                 <p class="price">6900 DA</p>
-
-                <button onclick="addToCart('Classic White',6900)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Classic White',6900)">أضف إلى السلة</button>
             </div>
 
             <div class="card">
-
                 <img src="images/shoe5.jpg">
-
                 <h3>Air Max</h3>
-
                 <p class="price">4500 DA</p>
-
-                <button onclick="addToCart('Air Max',4500)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Air Max',4500)">أضف إلى السلة</button>
             </div>
 
             <div class="card">
-
                 <img src="images/shoe6.jpg">
-
                 <h3>Runner Pro</h3>
-
                 <p class="price">3000 DA</p>
-
-                <button onclick="addToCart('Runner Pro',3000)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Runner Pro',3000)">أضف إلى السلة</button>
             </div>
 
             <div class="card">
-
                 <img src="images/shoe7.jpg">
-
                 <h3>Sport Blue</h3>
-
                 <p class="price">8200 DA</p>
-
-                <button onclick="addToCart('Sport Blue',8200)">
-                    أضف إلى السلة
-                </button>
-
+                <button onclick="addToCart('Sport Blue',8200)">أضف إلى السلة</button>
             </div>
 
         </div>
@@ -173,46 +131,40 @@
 
         <form>
 
-            <input type="text" placeholder="الاسم" required>
+            <input type="text" id="name" placeholder="الاسم" required>
 
-            <input type="text" placeholder="اللقب" required>
+            <input type="text" id="lastname" placeholder="اللقب" required>
 
-            <input type="tel" placeholder="رقم الهاتف" required>
+            <input type="tel" id="phone" placeholder="رقم الهاتف" required>
 
-            <select required>
-
+            <select id="state" required>
                 <option>اختر الولاية</option>
-
                 <option>الجزائر</option>
                 <option>البليدة</option>
                 <option>وهران</option>
                 <option>قسنطينة</option>
                 <option>سطيف</option>
-
             </select>
 
-            <input type="text" placeholder="البلدية">
+            <input type="text" id="city" placeholder="البلدية">
 
-            <input type="text" placeholder="العنوان الكامل">
+            <input type="text" id="address" placeholder="العنوان الكامل">
 
             <input type="text" id="product" placeholder="المنتج" readonly>
 
-            <select>
-
+            <select id="size">
                 <option>المقاس</option>
-
                 <option>39</option>
                 <option>40</option>
                 <option>41</option>
                 <option>42</option>
                 <option>43</option>
                 <option>44</option>
-
             </select>
 
-            <input type="number" value="1" min="1" placeholder="الكمية">
+            <input type="number" id="quantity" value="1" min="1" placeholder="الكمية">
 
-            <textarea placeholder="ملاحظات"></textarea>
+            <textarea id="notes" placeholder="ملاحظات"></textarea>
 
             <button type="submit">
                 إرسال الطلب
@@ -221,8 +173,7 @@
         </form>
 
     </section>
-
-    <!-- Footer -->
+	    <!-- Footer -->
 
     <footer>
 
