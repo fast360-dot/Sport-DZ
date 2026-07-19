@@ -1,7 +1,9 @@
 // ===========================
 // Sport DZ
-// Shopping Cart
+// Google Sheets + Shopping Cart
 // ===========================
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLqFGzqqor3T_3k8HdeDwxHu688zOcepASWX8LF-5QC2h6PRChy-xacMYt0kgyGs2G/exec";
 
 let cart = [];
 
@@ -12,6 +14,24 @@ function addToCart(name, price) {
         name: name,
         price: Number(price)
     });
+
+    updateCart();
+
+}
+
+// حذف منتج
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+// إفراغ السلة
+function clearCart() {
+
+    cart = [];
 
     updateCart();
 
@@ -51,34 +71,14 @@ function updateCart() {
 
     productInput.value = names.join(" , ");
 
-}
-
-// حذف منتج
-function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    updateCart();
-
-}
-
-// إفراغ السلة
-function clearCart() {
-
-    cart = [];
-
-    updateCart();
-
-}
-
-// تشغيل الصفحة
+}// تشغيل الصفحة
 document.addEventListener("DOMContentLoaded", () => {
 
     updateCart();
 
     const form = document.querySelector("#order form");
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", async function (e) {
 
         e.preventDefault();
 
@@ -90,15 +90,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        alert("تم إرسال الطلب بنجاح ✅");
+        const data = {
 
-        console.log("الطلب:");
+            name: document.getElementById("name").value,
+            lastname: document.getElementById("lastname").value,
+            phone: document.getElementById("phone").value,
+            state: document.getElementById("state").value,
+            city: document.getElementById("city").value,
+            address: document.getElementById("address").value,
+            products: document.getElementById("product").value,
+            size: document.getElementById("size").value,
+            quantity: document.getElementById("quantity").value,
+            notes: document.getElementById("notes").value
 
-        console.log(cart);
+        };
 
-        clearCart();
+        try {
 
-        form.reset();
+            const response = await fetch(SCRIPT_URL, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+
+            });            if (!response.ok) {
+
+                throw new Error("فشل إرسال الطلب");
+
+            }
+
+            const result = await response.json();
+
+            console.log(result);
+
+            alert("تم إرسال الطلب بنجاح ✅");
+
+            form.reset();
+
+            clearCart();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("حدث خطأ أثناء إرسال الطلب، حاول مرة أخرى.");
+
+        }
 
     });
 
