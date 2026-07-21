@@ -1,34 +1,45 @@
-// ===========================
-// Sport DZ
-// Google Sheets + Shopping Cart
-// ===========================
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLqFGzqqor3T_3k8HdeDwxHu688zOcepASWX8LF-5QC2h6PRChy-xacMYt0kgyGs2G/exec";
+const firebaseConfig = {
+    apiKey: "AIzaSyAydnVX4mbnbcoVYLsPuVY3OXdu5103IYg",
+    authDomain: "sport-dz-f255c.firebaseapp.com",
+    projectId: "sport-dz-f255c",
+    storageBucket: "sport-dz-f255c.firebasestorage.app",
+    messagingSenderId: "1094868870226",
+    appId: "1:1094868870226:web:e2fe5535291f450117ab8b",
+    measurementId: "G-CD6EM1E8XY"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 let cart = [];
 
-// إضافة منتج
-function addToCart(name, price) {
+window.addToCart = function (name, price) {
 
     cart.push({
-        name: name,
+        name,
         price: Number(price)
     });
 
     updateCart();
 
-}
+};
 
-// حذف منتج
-function removeItem(index) {
+window.removeItem = function (index) {
 
     cart.splice(index, 1);
 
     updateCart();
 
-}
+};
 
-// إفراغ السلة
 function clearCart() {
 
     cart = [];
@@ -37,7 +48,6 @@ function clearCart() {
 
 }
 
-// تحديث السلة
 function updateCart() {
 
     const cartList = document.getElementById("cart-list");
@@ -68,11 +78,9 @@ function updateCart() {
 
     total.textContent = sum;
     cartCount.textContent = cart.length;
-
     productInput.value = names.join(" , ");
 
-}// تشغيل الصفحة
-document.addEventListener("DOMContentLoaded", () => {
+}document.addEventListener("DOMContentLoaded", () => {
 
     updateCart();
 
@@ -100,44 +108,32 @@ document.addEventListener("DOMContentLoaded", () => {
             address: document.getElementById("address").value,
             products: document.getElementById("product").value,
             size: document.getElementById("size").value,
-            quantity: document.getElementById("quantity").value,
-            notes: document.getElementById("notes").value
+            quantity: Number(document.getElementById("quantity").value),
+            notes: document.getElementById("notes").value,
+            total: Number(document.getElementById("total").textContent)
 
         };
 
         try {
 
-            const response = await fetch(SCRIPT_URL, {
+            await addDoc(collection(db, "orders"), {
 
-                method: "POST",
+                ...data,
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                createdAt: serverTimestamp()
 
-                body: JSON.stringify(data)
+            });
 
-            });            if (!response.ok) {
-
-                throw new Error("فشل إرسال الطلب");
-
-            }
-
-            const result = await response.json();
-
-            console.log(result);
-
-            alert("تم إرسال الطلب بنجاح ✅");
+            alert("تم إرسال الطلب بنجاح ?");
 
             form.reset();
 
             clearCart();
-
-        } catch (error) {
+			        } catch (error) {
 
             console.error(error);
 
-            alert("حدث خطأ أثناء إرسال الطلب، حاول مرة أخرى.");
+            alert("حدث خطأ أثناء إرسال الطلب.");
 
         }
 
